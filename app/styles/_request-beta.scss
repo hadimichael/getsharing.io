@@ -36,4 +36,10 @@
     .alert {
         display: none;
     }
+
+    button {
+        @media(min-width: 767px) {
+            margin-left: 10px;
+        }
+    }
 }
