@@ -52,7 +52,7 @@
                 </p>
                 <div class="cta animated fadeInDown">
                     <a href="/#features" class="button-outline">Learn more</a>
-                    <a href="/#" class="button" id="getsharing">Get sharing</a>
+                    <a href="/#" class="button" id="getsharing" disabled><i class="loading"></i> Verifying IP...</a>
                 </div>
             </div>
         </div>
@@ -73,7 +73,7 @@
                         </p>
                     </div>
                     <div class="col-md-6 image">
-                        <img src="/images/feature1.png" class="img-responsive" alt="feature1" />
+                        <img src="images/feature1.png" class="img-responsive" alt="feature1" />
                     </div>
                 </div>
                 <div class="divider"></div>
@@ -88,7 +88,7 @@
                         </p>
                     </div>
                     <div class="col-md-6 image">
-                        <img src="/images/feature2.png" class="img-responsive" alt="feature2" />
+                        <img src="images/feature2.png" class="img-responsive" alt="feature2" />
                     </div>
                 </div>
             </div>
@@ -101,10 +101,10 @@
                         <h4>Try GetSharing.io today and stop hogging.</h4>
                     </div>
                     <div class="col-md-6">
-                        <form class="form-inline req-form" role="form">
+                        <form class="form-inline req-form" role="form" method="post">
                             <div class="form-group">
-                                <label class="sr-only" for="exampleInputEmail2">Email address</label>
-                                <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Your email address">
+                                <label class="sr-only" for="email-address">Email address</label>
+                                <input type="email" class="form-control" name="email" id="email-address" placeholder="Your email address">
                             </div>
                             <button type="submit" class="button button-small">Request Invite</button>
                         </form>

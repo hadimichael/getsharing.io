@@ -3,6 +3,8 @@
 (function(NAMESPACE) {
     'use strict';
 
+    var WHITELISTED_IPS = ['120.148.231.137'];
+
     var animateToTarget = function (target) {
         if (target.length) {
             $('html,body').animate({
@@ -28,12 +30,15 @@
                 function(res) {
                     console.log(res);
 
-                    var whitelistedIPs = ['120.148.231.137'];
+                    var el = $('#getsharing');
 
-                    $('#getsharing').on('click', function(ev) {
+                    el.html('Get sharing');
+                    el.removeAttr('disabled');
+
+                    el.on('click', function(ev) {
                         ev.preventDefault();
 
-                        if ($.inArray(res.ip, whitelistedIPs) >= 0) {
+                        if ($.inArray(res.ip, WHITELISTED_IPS) >= 0) {
                             window.location.replace('http://app.getsharing.io');
                         } else {
                             var target = $('#request-beta');
