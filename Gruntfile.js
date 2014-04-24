@@ -319,6 +319,7 @@ module.exports = function (grunt) {
             }
         },
 
+        //configure to push to gh-pages (Docs: https://github.com/robwierzbowski/grunt-build-control)
         buildcontrol: {
             options: {
                 dir: 'dist',
@@ -366,6 +367,7 @@ module.exports = function (grunt) {
         }
     });
 
+    //use grunt-build-control on advice from: http://yeoman.io/deployment.html
     grunt.loadNpmTasks('grunt-build-control');
 
     grunt.registerTask('serve', function (target) {
@@ -415,6 +417,11 @@ module.exports = function (grunt) {
         'rev',
         'usemin',
         'htmlmin'
+    ]);
+
+    grunt.registerTask('deploy', [
+        'build',
+        'buildcontrol:pages'
     ]);
 
     grunt.registerTask('default', [
