@@ -319,6 +319,21 @@ module.exports = function (grunt) {
             }
         },
 
+        buildcontrol: {
+            options: {
+                dir: 'dist',
+                commit: true,
+                push: true,
+                message: 'Built %sourceName% from commit %sourceCommit% on branch %sourceBranch%'
+            },
+            pages: {
+                options: {
+                    remote: 'git@github.com:hadimichael/getsharing.io.git',
+                    branch: 'gh-pages'
+                }
+            }
+        },
+
 
         // Generates a custom Modernizr build that includes only the tests you
         // reference in your app
@@ -351,6 +366,7 @@ module.exports = function (grunt) {
         }
     });
 
+    grunt.loadNpmTasks('grunt-build-control');
 
     grunt.registerTask('serve', function (target) {
         if (target === 'dist') {
