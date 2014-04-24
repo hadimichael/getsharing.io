@@ -44,7 +44,7 @@
                 btn.off('click.scroll');
                 btn.on('click.launch', function(ev) {
                     ev.preventDefault();
-                    // window.location.replace('http://app.getsharing.io');
+                    window.location.replace('http://app.getsharing.io');
                 });
             } else {
                 btn.on('click.launch', function(ev) {

@@ -6,7 +6,7 @@
 /*global Parse:false */
 
 window.GETSHARING = window.GETSHARING || {};
-GETSHARING.IS_DEBUG = true;
+GETSHARING.IS_DEBUG = false;
 
 /* Stop console.log errors */
 if (typeof console === 'undefined') {
