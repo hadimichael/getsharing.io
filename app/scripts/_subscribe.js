@@ -37,7 +37,7 @@
                     }, function(error, subscriber) {
                         //boooo - error saving
                         $alert.addClass('alert-danger');
-                        $alert.find('.message').html('<strong>Error!</strong> Could not save your address. Please try again.');
+                        $alert.find('.message').html('<strong>Error!</strong> ' + error.description + '. Please try again.');
                         $alert.show();
                     }).then(function() {
                         //always do this...

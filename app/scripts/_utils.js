@@ -4,7 +4,7 @@
     'use strict';
 
     //CONSTANTS
-    var WHITELISTED_IPS = ['x120.148.231.137'];
+    var WHITELISTED_IPS = ['120.148.231.137'];
 
     //HELPER FUNCTIONS
     var animateToTarget = function (target) {
