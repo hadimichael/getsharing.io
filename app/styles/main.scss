@@ -2,7 +2,7 @@
 @import "theme/theme";
 
 /* Variables */
-$bg-color: #2475a6;
+@import "variables";
 
 /* Page modules */
 @import "navbar";
@@ -12,13 +12,18 @@ $bg-color: #2475a6;
 @import "footer";
 
 /* GLOBAL */
-i.loading {
+// i.loading {
+//     position: relative;
+//     display: inline-block;
+//     width: 20px;
+//     height: 20px;
+//     top: 3px;
+//     background-image: url('/images/loader.gif');
+//     background-position: 50% 50%;
+//     background-repeat: no-repeat;
+// }
+
+a img {
     position: relative;
-    display: inline-block;
-    width: 20px;
-    height: 20px;
-    top: 3px;
-    background-image: url('/images/loader.gif');
-    background-position: 50% 50%;
-    background-repeat: no-repeat;
+    top: -2px;
 }

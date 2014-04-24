@@ -1,9 +1,9 @@
-#hero {
+.hero {
     overflow: hidden;
     background: $bg-color;
     background-size: cover;
 
-    background-image: url("/images/bg.jpg");
+    background-image: $bg-image;
 
     background-position: center 16%;
     height: 580px;
@@ -103,7 +103,7 @@
             text-align: center;
         }
 
-        a {
+        a, button {
             margin-right: 20px;
             padding: 15px 31px;
 
