@@ -16,7 +16,7 @@
 	border-radius: 5px;
 	box-shadow: rgba(0, 0, 0, 0.3) 0 1px 2px, inset rgba(255, 255, 255, 0.88) 0px 1px 3px -1px;
 	background-color: #4589E3;
-	@include background-gradient(#5DA4FF, #417BFF);
+	// @include background-gradient(#5DA4FF, #417BFF);
 
 	@include transition(all 0.2s linear);
 
@@ -81,7 +81,7 @@
 	background: -moz-linear-gradient(#ccd0d6, #adb2bb);
 	background: -ms-linear-gradient(#ccd0d6, #adb2bb);
 	background: -o-linear-gradient(#ccd0d6, #adb2bb);
-	background: linear-gradient(#ccd0d6, #adb2bb);				
+	background: linear-gradient(#ccd0d6, #adb2bb);
 
 	span {
 		display: block;
