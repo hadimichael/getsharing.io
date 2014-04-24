@@ -1,47 +1,57 @@
 /*global GETSHARING:false */
+/*global Parse:false */
 
 (function(NAMESPACE) {
     'use strict';
 
-    var animateToTarget = function (target) {
-        if (target.length) {
-            $('html,body').animate({
-                scrollTop: target.offset().top
-            }, 500);
-            return false;
-        }
+    var isEmail = function(email) {
+        var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+        return regex.test(email);
     };
 
-    NAMESPACE.util = {
-        scrollToDiv: function () {
-            $('a[href*=#]:not([href=#])').click(function() {
-                if (location.pathname.replace(/^\//,'') === this.pathname.replace(/^\//,'') && location.hostname === this.hostname) {
-                    var target = $(this.hash);
-                    target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
-                    animateToTarget(target);
+    NAMESPACE.subscribe = {
+        init: function () {
+            $('#request-beta form[name=request-beta]').submit(function(ev) {
+                ev.preventDefault();
+
+                var $email = $('input[name=email]', this),
+                    $btn = $('button[type=submit]', this),
+                    $alert = $('#request-beta .alert'),
+                    email = $email.val();
+
+                if (email.length > 0 && isEmail(email)) {
+                    $btn.button('loading');
+                    $email.attr('disabled','disabled');
+
+                    var Subscriber = Parse.Object.extend('subscriber'),
+                        subscriber = new Subscriber();
+
+                    subscriber.set('email', email);
+                    subscriber.set('beta_request', true);
+
+                    subscriber.save().then(function(subscriber) {
+                        //success
+                        $alert.addClass('alert-success');
+                        $alert.find('.message').html('<strong>Requested!</strong> Thanks for you interest. We\'ll be in touch.');
+                        $alert.show();
+                    }, function(error, subscriber) {
+                        //boooo - error saving
+                        $alert.addClass('alert-danger');
+                        $alert.find('.message').html('<strong>Error!</strong> Could not save your address. Please try again.');
+                        $alert.show();
+                    }).then(function() {
+                        //always do this...
+                        $btn.button('reset');
+                        $email.removeAttr('disabled');
+                        $email.val('');
+                    });
+                } else {
+                    //invalid email...
+                    $alert.addClass('alert-warning');
+                    $alert.find('.message').html('<strong>Warning!</strong> Invalid email.');
+                    $alert.show();
                 }
             });
-        },
-
-        appHook: function () {
-            $.getJSON('http://www.telize.com/jsonip?callback=?',
-                function(res) {
-                    console.log(res);
-
-                    var whitelistedIPs = ['120.148.231.137'];
-
-                    $('#getsharing').on('click', function(ev) {
-                        ev.preventDefault();
-
-                        if ($.inArray(res.ip, whitelistedIPs) >= 0) {
-                            window.location.replace('http://app.getsharing.io');
-                        } else {
-                            var target = $('#request-beta');
-                            animateToTarget(target);
-                        }
-                    });
-                }
-            );
         }
     };
 

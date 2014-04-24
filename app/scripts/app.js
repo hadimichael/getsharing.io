@@ -3,6 +3,7 @@
  * ========================================================================== */
 
 /*global GETSHARING:false */
+/*global Parse:false */
 
 window.GETSHARING = window.GETSHARING || {};
 GETSHARING.IS_DEBUG = true;
@@ -23,7 +24,7 @@ if (!GETSHARING.IS_DEBUG) {
 
     NAMESPACE.init =  function() {
         /* initialise Parse */
-        //Parse.initialize("", "");
+        Parse.initialize('MKJGcu3DFdCIFr8vz7CTEyTiynIJDqnfr9vI70AH', 'GyBawjtKWHkDa1UuyqA2elU8sgU3rezdWz4TJtkf');
 
         /* initialise JS modules */
         NAMESPACE.utils.init();

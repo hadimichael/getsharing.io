@@ -38,29 +38,29 @@
         btn.button('loading');
 
         $.getJSON(verificationServiceUrl, function(res) {
-                console.log(res);
+            console.log(res);
 
-                if ($.inArray(res.ip, WHITELISTED_IPS) >= 0) {
-                    btn.off('click.scroll');
-                    btn.on('click.launch', function(ev) {
-                        ev.preventDefault();
-                        // window.location.replace('http://app.getsharing.io');
-                    });
-                } else {
-                    btn.on('click.launch', function(ev) {
-                        ev.preventDefault();
-                        $('#request-beta input[name=email]').focus();
-                    });
-                }
+            if ($.inArray(res.ip, WHITELISTED_IPS) >= 0) {
+                btn.off('click.scroll');
+                btn.on('click.launch', function(ev) {
+                    ev.preventDefault();
+                    // window.location.replace('http://app.getsharing.io');
+                });
+            } else {
+                btn.on('click.launch', function(ev) {
+                    ev.preventDefault();
+                    $('#request-beta input[name=email]').focus();
+                });
+            }
 
-                btn.button('reset');
+            btn.button('reset');
         });
     };
 
     NAMESPACE.utils = {
         init: function () {
             scrollToDiv();
-            //verifyIP();
+            verifyIP();
         }
     };
 
