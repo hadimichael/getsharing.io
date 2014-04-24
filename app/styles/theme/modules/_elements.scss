@@ -15,7 +15,7 @@
 	border: 0px;
 	border-radius: 5px;
 	box-shadow: rgba(0, 0, 0, 0.3) 0 1px 2px, inset rgba(255, 255, 255, 0.88) 0px 1px 3px -1px;
-	background-color: #4589E3;
+	background-color: rgb(36, 117, 166);
 	// @include background-gradient(#5DA4FF, #417BFF);
 
 	@include transition(all 0.2s linear);
@@ -23,6 +23,7 @@
 	&:hover {
 		color: #fff;
 		text-decoration: none;
+		background-color: rgba(36, 117, 166, 0.85);
 	}
 	&:active {
 		box-shadow: inset 0px 3px 3px rgba(0, 0, 0, 0.29);
@@ -30,7 +31,7 @@
 
 	&.button-small {
 		padding: 10px 33px;
-		border: 1px solid #68A2EE;
+		// border: 1px solid #68A2EE;
 		font-size: 14px;
 		font-weight: 500;
 	}
@@ -55,6 +56,7 @@
 		text-decoration: none;
 		color: #ddd;
 		border-color: #ddd;
+		background: rgba(0, 0, 0, 0.30);
 	}
 }
 
