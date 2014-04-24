@@ -21,11 +21,13 @@ if (!GETSHARING.IS_DEBUG) {
 
     'use strict';
 
-    NAMESPACE.INIT = {
-        init: function() {
-            NAMESPACE.util.scrollToDiv();
-            // NAMESPACE.util.appHook();
-        }
+    NAMESPACE.init =  function() {
+        /* initialise Parse */
+        //Parse.initialize("", "");
+
+        /* initialise JS modules */
+        NAMESPACE.utils.init();
+        NAMESPACE.subscribe.init();
     };
 
 }(GETSHARING));
@@ -34,5 +36,5 @@ if (!GETSHARING.IS_DEBUG) {
 $(document).ready(function() {
     'use strict';
 
-    GETSHARING.INIT.init();
+    GETSHARING.init();
 });

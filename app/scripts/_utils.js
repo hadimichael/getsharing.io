@@ -3,8 +3,10 @@
 (function(NAMESPACE) {
     'use strict';
 
-    var WHITELISTED_IPS = ['120.148.231.137'];
+    //CONSTANTS
+    var WHITELISTED_IPS = ['x120.148.231.137'];
 
+    //HELPER FUNCTIONS
     var animateToTarget = function (target) {
         if (target.length) {
             $('html,body').animate({
@@ -12,41 +14,53 @@
             }, 500);
             return false;
         }
-    };
+    },
 
-    NAMESPACE.util = {
-        scrollToDiv: function () {
-            $('a[href*=#]:not([href=#])').click(function() {
-                if (location.pathname.replace(/^\//,'') === this.pathname.replace(/^\//,'') && location.hostname === this.hostname) {
-                    var target = $(this.hash);
-                    target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
-                    animateToTarget(target);
-                }
-            });
-        },
+    //INITIALISERS
+    scrollToDiv = function () {
+        //scroll to #divs, instead jumping to them
+        $('a[href*=#]:not([href=#])').on('click.scroll', function(ev) {
+            ev.preventDefault();
+            if (location.pathname.replace(/^\//,'') === this.pathname.replace(/^\//,'') && location.hostname === this.hostname) {
+                var target = $(this.hash);
+                target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+                animateToTarget(target);
+            }
+        });
+    },
 
-        appHook: function () {
-            $.getJSON('http://www.telize.com/jsonip?callback=?',
-                function(res) {
-                    console.log(res);
+    verifyIP = function () {
+        //check if the user is on a whitelisted IP, before sending them to the app...
 
-                    var el = $('#getsharing');
+        var verificationServiceUrl = 'http://www.telize.com/jsonip?callback=?',
+            btn = $('.hero .load-app');
 
-                    el.html('Get sharing');
-                    el.removeAttr('disabled');
+        btn.button('loading');
 
-                    el.on('click', function(ev) {
+        $.getJSON(verificationServiceUrl, function(res) {
+                console.log(res);
+
+                if ($.inArray(res.ip, WHITELISTED_IPS) >= 0) {
+                    btn.off('click.scroll');
+                    btn.on('click.launch', function(ev) {
                         ev.preventDefault();
-
-                        if ($.inArray(res.ip, WHITELISTED_IPS) >= 0) {
-                            window.location.replace('http://app.getsharing.io');
-                        } else {
-                            var target = $('#request-beta');
-                            animateToTarget(target);
-                        }
+                        // window.location.replace('http://app.getsharing.io');
+                    });
+                } else {
+                    btn.on('click.launch', function(ev) {
+                        ev.preventDefault();
+                        $('#request-beta input[name=email]').focus();
                     });
                 }
-            );
+
+                btn.button('reset');
+        });
+    };
+
+    NAMESPACE.utils = {
+        init: function () {
+            scrollToDiv();
+            //verifyIP();
         }
     };
 
