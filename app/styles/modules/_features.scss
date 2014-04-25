@@ -57,10 +57,10 @@
                     text-align: center;
                 }
             }
-            p {
+            p, li {
                 color: #6C7279;
                 font-size: 14px;
-                margin-top: 20px;
+                margin-bottom: 10px;
                 line-height: 24px;
                 width: 83%;
                 font-weight: normal;
@@ -70,6 +70,14 @@
                     width: 100%;
                     font-size: 14px;
                 }
+            }
+            li:first-child {
+                margin-top: 0px;
+            }
+            ul {
+                list-style: none;
+                margin: 0;
+                padding: 0;
             }
         }
         .image {
