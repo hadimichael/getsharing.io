@@ -24,7 +24,11 @@ if (!GETSHARING.IS_DEBUG) {
 
     NAMESPACE.init =  function() {
         /* initialise Parse */
-        Parse.initialize('MKJGcu3DFdCIFr8vz7CTEyTiynIJDqnfr9vI70AH', 'GyBawjtKWHkDa1UuyqA2elU8sgU3rezdWz4TJtkf');
+        try {
+            Parse.initialize('MKJGcu3DFdCIFr8vz7CTEyTiynIJDqnfr9vI70AH', 'GyBawjtKWHkDa1UuyqA2elU8sgU3rezdWz4TJtkf');
+        } catch(e) {
+            console.error('Parse didn\'t initialise');
+        }
 
         /* initialise JS modules */
         NAMESPACE.utils.init();
@@ -38,6 +42,7 @@ $(document).ready(function() {
     'use strict';
 
     $('html').removeClass('no-js');
+    $('.alert').removeClass('alert-warning');
 
     GETSHARING.init();
 });

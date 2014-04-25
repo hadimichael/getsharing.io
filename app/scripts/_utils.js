@@ -4,7 +4,7 @@
     'use strict';
 
     //CONSTANTS
-    var WHITELISTED_IPS = ['120.148.231.137'];
+    var WHITELISTED_IPS = ['x120.148.231.137']; //TODO: ideally, this would be pulled from Parse - hardcode it for now
 
     //HELPER FUNCTIONS
     var animateToTarget = function (target) {
@@ -31,14 +31,13 @@
 
     verifyIP = function () {
         //check if the user is on a whitelisted IP, before sending them to the app...
-
         var verificationServiceUrl = 'http://www.telize.com/jsonip?callback=?',
             btn = $('.hero .load-app');
 
         btn.button('loading');
 
         $.getJSON(verificationServiceUrl, function(res) {
-            console.log(res);
+            // console.log(res);
 
             if ($.inArray(res.ip, WHITELISTED_IPS) >= 0) {
                 btn.off('click.scroll');
@@ -47,6 +46,7 @@
                     window.location.replace('http://app.getsharing.io');
                 });
             } else {
+                //still scroll, but put the email address in focus
                 btn.on('click.launch', function(ev) {
                     ev.preventDefault();
                     $('#request-beta input[name=email]').focus();

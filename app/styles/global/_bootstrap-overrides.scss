@@ -17,3 +17,15 @@ a {
     background-color: $bg-color;
     background-color: $bg-color-rgba;
 }
+
+.alert {
+    display: none;
+
+    .no-js & {
+        display: block;
+
+        .close {
+            display: none;
+        }
+    }
+}
