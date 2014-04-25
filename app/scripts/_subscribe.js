@@ -20,7 +20,7 @@
                     email = $email.val();
 
                 //clear out any existing styles
-                $alert.removeClass('alert-success').removeClass('alert-warning').removeClass('alert-danger');
+                $alert.hide().removeClass('alert-success').removeClass('alert-warning').removeClass('alert-danger');
 
                 if (email.length > 0 && isEmail(email)) {
                     $btn.button('loading');
@@ -36,7 +36,7 @@
                         subscriber.save().then(function(subscriber) {
                             //success
                             $alert.addClass('alert-success');
-                            $alert.find('.message').html('<strong>Requested!</strong> Thanks for you interest. I\'ll be in touch soon.');
+                            $alert.find('.message').html('<strong>Requested!</strong> Thanks for you interest. We\'ll be in touch soon.');
                         }, function(error, subscriber) {
                             //boooo - error with saving
                             $alert.addClass('alert-danger');
