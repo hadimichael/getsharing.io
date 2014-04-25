@@ -19,6 +19,9 @@
                     $alert = $('#request-beta .alert'),
                     email = $email.val();
 
+                //clear out any existing styles
+                $alert.removeClass('alert-success').removeClass('alert-warning').removeClass('alert-danger');
+
                 if (email.length > 0 && isEmail(email)) {
                     $btn.button('loading');
                     $email.attr('disabled','disabled');
