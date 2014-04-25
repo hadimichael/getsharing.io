@@ -1,0 +1,62 @@
+.button {
+    //general
+    -webkit-font-smoothing: antialiased;
+    display: inline-block;
+    vertical-align: middle;
+    zoom: 1;
+    color: #fff;
+    font-weight: 400;
+
+    @include transition(all 0.2s linear);
+
+    &:active {
+        box-shadow: inset 0px 3px 3px rgba(0, 0, 0, 0.29);
+    }
+
+    //loader image
+    .loader {
+        position: relative;
+        top: -2px;
+    }
+
+    //blue (default) button
+    padding: 13px 32px;
+    font-size: 17px;
+    text-shadow: rgba(0,0,0,0.2) 0 -1px 0;
+    box-shadow: rgba(0, 0, 0, 0.3) 0 1px 2px, inset rgba(255, 255, 255, 0.88) 0px 1px 3px -1px;
+    background-color: rgb(36, 117, 166);
+    border: 0px;
+    border-radius: 5px;
+
+    &:hover,
+    &:focus {
+        color: #fff;
+        text-decoration: none;
+        background-color: rgba(36, 117, 166, 0.75);
+    }
+
+    //small-button
+    &.button-small {
+        padding: 10px 23px;
+        font-size: 14px;
+        font-weight: 500;
+    }
+
+    //outine-button
+    &.button-outline {
+        padding: 12px 31px;
+        font-size: 16px;
+        background-color: rgba(0, 0, 0, 0.15);
+        text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
+        border: 2px solid #fff;
+        border-radius: 4px;
+
+        &:hover,
+        &:focus {
+            color: #ddd;
+            border-color: #ddd;
+            background: rgba(0, 0, 0, 0.30);
+        }
+    }
+}
+

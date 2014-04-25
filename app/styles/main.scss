@@ -1,18 +1,14 @@
-/* Bootstrap theme styles */
-@import "theme/theme";
+// @import "theme/theme"; //kept here for dev purposes
 
-/* Variables */
-@import "variables";
+/* Global styles */
+@import "global/variables";
+@import "global/mixins";
+@import "global/button";
+@import "global/bootstrap-overrides";
 
 /* Page modules */
-@import "navbar";
-@import "hero";
-@import "features";
-@import "request-beta";
-@import "footer";
-
-/* GLOBAL */
-a img {
-    position: relative;
-    top: -2px;
-}
+@import "modules/navbar";
+@import "modules/hero";
+@import "modules/features";
+@import "modules/request-beta";
+@import "modules/footer";

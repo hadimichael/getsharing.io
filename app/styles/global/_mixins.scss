@@ -1,0 +1,22 @@
+@mixin transition($transitions) {
+    -webkit-transition: $transitions;
+    -moz-transition: $transitions;
+    -ms-transition: $transitions;
+    -o-transition: $transitions;
+    transition: $transitions;
+}
+
+@mixin placeholder {
+  &::-webkit-input-placeholder {@content}
+  &:-moz-placeholder           {@content}
+  &::-moz-placeholder          {@content}
+  &:-ms-input-placeholder      {@content}
+}
+
+@mixin animationDelay($value) {
+    -webkit-animation-delay: $value;
+    -moz-animation-delay: $value;
+    -o-animation-delay: $value;
+    -ms-animation-delay: $value;
+    animation-delay: $value;
+}

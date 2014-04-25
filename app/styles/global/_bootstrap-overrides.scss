@@ -1,0 +1,19 @@
+// global bootstrap overrirdes
+@media (min-width: 1200px) {
+    .container {
+        width: 970px;
+    }
+}
+
+*:focus {
+    outline: 0;
+}
+
+a {
+    color: $a-color;
+}
+
+.navbar-inverse {
+    background-color: $bg-color;
+    background-color: $bg-color-rgba;
+}

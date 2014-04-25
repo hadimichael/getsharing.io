@@ -37,5 +37,7 @@ if (!GETSHARING.IS_DEBUG) {
 $(document).ready(function() {
     'use strict';
 
+    $('html').removeClass('no-js');
+
     GETSHARING.init();
 });
